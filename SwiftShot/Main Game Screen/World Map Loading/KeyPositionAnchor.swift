@@ -32,6 +32,10 @@ class KeyPositionAnchor: ARAnchor {
         super.init(coder: aDecoder)
     }
     
+    required init(anchor: ARAnchor) {
+        fatalError("init(anchor:) has not been implemented")
+    }
+    
     override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
         aCoder.encode(image, forKey: "image")

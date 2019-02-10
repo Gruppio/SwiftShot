@@ -24,6 +24,15 @@ class BoardAnchor: ARAnchor {
         super.init(coder: aDecoder)
     }
     
+    required init(anchor: ARAnchor) {
+        if let boardAnchor = anchor as? BoardAnchor {
+            self.size = boardAnchor.size
+        } else {
+            fatalError("init(anchor:) has not been implemented")
+        }
+        super.init(anchor: anchor)
+    }
+    
     override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
         aCoder.encode(size, forKey: "size")
