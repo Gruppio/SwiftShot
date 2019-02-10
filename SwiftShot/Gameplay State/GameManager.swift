@@ -192,7 +192,7 @@ class GameManager: NSObject {
 
     // MARK: - inbound from network
     private func process(command: GameCommand) {
-        os_signpost(type: .begin, log: .render_loop, name: .process_command, signpostID: .render_loop,
+        os_signpost(.begin, log: .render_loop, name: .process_command, signpostID: .render_loop,
                     "Action : %s", command.action.description)
         switch command.action {
         case .gameAction:
@@ -209,7 +209,7 @@ class GameManager: NSObject {
                 handleStartGameMusic(timeData, from: player)
             }
         }
-        os_signpost(type: .end, log: .render_loop, name: .process_command, signpostID: .render_loop,
+        os_signpost(.end, log: .render_loop, name: .process_command, signpostID: .render_loop,
                     "Action : %s", command.action.description)
     }
     
@@ -313,7 +313,7 @@ class GameManager: NSObject {
     }
 
     private func syncPhysics() {
-        os_signpost(type: .begin, log: .render_loop, name: .physics_sync, signpostID: .render_loop,
+        os_signpost(.begin, log: .render_loop, name: .physics_sync, signpostID: .render_loop,
                     "Physics sync started")
         if isNetworked && physicsSyncData.isInitialized {
             if isServer {
@@ -323,7 +323,7 @@ class GameManager: NSObject {
                 physicsSyncData.updateFromReceivedData()
             }
         }
-        os_signpost(type: .end, log: .render_loop, name: .physics_sync, signpostID: .render_loop,
+        os_signpost(.end, log: .render_loop, name: .physics_sync, signpostID: .render_loop,
                     "Physics sync finished")
         
     }
